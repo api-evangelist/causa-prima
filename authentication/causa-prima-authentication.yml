@@ -1,0 +1,14 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/causa-prima-scribo-openapi.json
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Optional API key for elevated quotas. Unauthenticated requests are accepted and
+    rate-limited per IP.
+  sources:
+  - openapi/causa-prima-scribo-openapi.json
