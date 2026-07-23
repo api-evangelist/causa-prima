@@ -1,0 +1,65 @@
+openapi: 3.1.0
+info:
+  title: Scribo Invoice Invoices Jurisdictions API
+  version: 1.0.0
+  description: Compliant e-invoice generation. **Phase 1 supports Germany (XRechnung / ZUGFeRD) and the United States (plain PDF) only** — any other sender jurisdiction is rejected with `unsupported_jurisdiction`. The `/api/v1/*` namespace served from `scribo.causaprima.ai` is the public surface — anonymous and rate-limited. The internal `/internal/scribo/*` namespace is used by the Causa Prima web app and MCP server and is not part of this contract.
+  contact:
+    name: Causa Prima
+    url: https://causaprima.ai
+servers:
+- url: https://scribo.causaprima.ai
+  description: Production
+- url: http://localhost:3200
+  description: Local development (scribo Next.js proxy)
+tags:
+- name: Jurisdictions
+paths:
+  /api/v1/jurisdictions:
+    get:
+      summary: List supported jurisdictions and formats
+      responses:
+        '200':
+          description: Supported jurisdictions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/JurisdictionEntry'
+      tags:
+      - Jurisdictions
+components:
+  schemas:
+    JurisdictionEntry:
+      type: object
+      properties:
+        jurisdiction:
+          type: string
+          pattern: ^[A-Z]{2}$
+        formats:
+          type: array
+          items:
+            type: string
+            enum:
+            - zugferd_comfort
+            - zugferd_basic
+            - xrechnung_cii
+            - xrechnung_ubl
+            - plain_pdf
+        default_format:
+          type: string
+          enum:
+          - zugferd_comfort
+          - zugferd_basic
+          - xrechnung_cii
+          - xrechnung_ubl
+          - plain_pdf
+      required:
+      - jurisdiction
+      - formats
+      - default_format
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Optional API key for elevated quotas. Unauthenticated requests are accepted and rate-limited per IP.
