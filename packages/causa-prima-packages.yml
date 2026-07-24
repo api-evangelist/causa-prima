@@ -1,0 +1,16 @@
+generated: '2026-07-18'
+method: searched
+source: https://registry.npmjs.org/@causaprima/scribo-cli
+packages:
+- language: javascript
+  registry: npm
+  name: "@causaprima/scribo-cli"
+  version: 1.0.0
+  url: https://www.npmjs.com/package/@causaprima/scribo-cli
+  install: npm install -g @causaprima/scribo-cli
+  official: true
+  license: UNLICENSED
+  description: >-
+    Causa Prima Scribo CLI — generate EN 16931-compliant e-invoices
+    (XRechnung, ZUGFeRD, plain US PDF) from the terminal. Also runnable via
+    npx @causaprima/scribo-cli with no install.

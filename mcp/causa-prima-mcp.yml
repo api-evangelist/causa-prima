@@ -1,0 +1,27 @@
+generated: '2026-07-18'
+method: searched
+status: published
+source: https://github.com/causa-prima-ai/scribo-mcp
+docs: https://scribo.causaprima.ai/docs/mcp
+server:
+  name: scribo
+  transport: http            # Streamable HTTP (JSON-RPC 2.0, MCP spec >= 2025-03-26)
+  url: https://scribo.causaprima.ai/mcp
+  authentication: none        # no signup; email verification occurs on first invoice
+  description: >-
+    Hosted Scribo MCP server for free EN 16931-compliant e-invoice generation.
+    Compatible with Claude Desktop/Claude.ai (custom connector), Cursor, Cline,
+    ChatGPT App, and OpenAI Codex CLI. No install, no API key.
+tools:
+- name: create_invoice
+  description: Generates a compliant invoice from the sender, recipient, and line-item details, and returns a durable download link.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- name: verify_email_code
+  description: Confirms ownership of the sender email using the 6-digit code Scribo emails on the first invoice.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/scribo/email-verifications/{id}/redeem
+- name: get_invoice
+  description: Re-fetches a previously generated invoice and a fresh download link.
+  source_operation: openapi/causa-prima-scribo-openapi.json#GET /api/v1/invoices/{id}
+- name: list_supported_jurisdictions
+  description: Lists which countries and formats are available.
+  source_operation: openapi/causa-prima-scribo-openapi.json#GET /api/v1/jurisdictions

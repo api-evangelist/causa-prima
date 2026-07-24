@@ -1,0 +1,19 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/causa-prima-ai/scribo-skill
+skills:
+- file: causa-prima-scribo.md
+  name: scribo
+  description: >-
+    Generate EN 16931-compliant e-invoices (XRechnung, ZUGFeRD) or a clean US
+    plain PDF via the public Scribo HTTP API. No signup; the sender's email is
+    the login. Provider-published Agent Skill (Claude / ChatGPT / Codex), saved
+    verbatim.
+  api: openapi/causa-prima-scribo-openapi.json
+  operations:
+  - POST /api/v1/invoices
+  - POST /api/v1/scribo/email-verifications
+  - POST /api/v1/scribo/email-verifications/{id}/redeem
+  - GET /api/v1/invoices/{id}
+  - GET /api/v1/invoices/{id}/download
+  - GET /api/v1/jurisdictions

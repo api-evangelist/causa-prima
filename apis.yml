@@ -1,8 +1,15 @@
 aid: causa-prima
 name: Causa Prima
-description: 'Causa Prima is a company surfaced as a portfolio company of creandum and added to the API
-  Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  Causa Prima is an AI-native fintech building an agent-to-agent network for finance
+  teams — automating invoicing, dispute resolution, and dynamic (early-payment)
+  discounting between buyers and suppliers. Its first public product, Scribo, is a
+  free, EN 16931-compliant e-invoicing engine that generates German ZUGFeRD and
+  XRechnung, plus plain US PDF invoices, through five surfaces: a web UI, an HTTP API,
+  a hosted MCP server, an npm CLI, and a Claude / ChatGPT / Codex Agent Skill — all
+  backed by the same public /api/v1 API with no signup (the sender's email is the login
+  via a magic link). The team previously built Taulia (acquired by SAP) and Finoa;
+  Causa Prima is backed by Creandum.
 url: https://raw.githubusercontent.com/api-evangelist/causa-prima/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -10,18 +17,137 @@ x-backed-by:
 - creandum
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: open
+  trial: false
+  try_now: false
+  public: true
+  label: Open access
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-18'
+image: https://causaprima.ai/og-image.jpg
 tags:
 - Company
-- Ai
-apis: []
+- AI
+- Fintech
+- E-Invoicing
+- Invoicing
+- Payments
+- Compliance
+- Germany
+- EN 16931
+- Agents
+- MCP
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- aid: causa-prima:causa-prima-invoices-api
+  name: Causa Prima Invoices API
+  description: The Invoices API from Causa Prima — 3 operation(s) for invoices.
+  humanURL: https://scribo.causaprima.ai/docs/api
+  baseURL: https://scribo.causaprima.ai
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/causa-prima-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://scribo.causaprima.ai/docs
+  - type: APIReference
+    url: https://scribo.causaprima.ai/docs/api
+- aid: causa-prima:causa-prima-jurisdictions-api
+  name: Causa Prima Jurisdictions API
+  description: The Jurisdictions API from Causa Prima — 1 operation(s) for jurisdictions.
+  humanURL: https://scribo.causaprima.ai/docs/api
+  baseURL: https://scribo.causaprima.ai
+  tags:
+  - Jurisdictions
+  properties:
+  - type: OpenAPI
+    url: openapi/causa-prima-jurisdictions-api-openapi.yml
+  - type: Documentation
+    url: https://scribo.causaprima.ai/docs
+  - type: APIReference
+    url: https://scribo.causaprima.ai/docs/api
+- aid: causa-prima:causa-prima-scribo-api
+  name: Causa Prima Scribo API
+  description: The Scribo API from Causa Prima — 4 operation(s) for scribo.
+  humanURL: https://scribo.causaprima.ai/docs/api
+  baseURL: https://scribo.causaprima.ai
+  tags:
+  - Scribo
+  properties:
+  - type: OpenAPI
+    url: openapi/causa-prima-scribo-api-openapi.yml
+  - type: Documentation
+    url: https://scribo.causaprima.ai/docs
+  - type: APIReference
+    url: https://scribo.causaprima.ai/docs/api
 common:
+# --- identity / link properties ---
 - type: Website
   url: https://causaprima.ai/
+- type: DeveloperPortal
+  url: https://scribo.causaprima.ai/docs
+- type: Documentation
+  url: https://scribo.causaprima.ai/docs
+- type: APIReference
+  url: https://scribo.causaprima.ai/docs/api
+- type: GettingStarted
+  url: https://scribo.causaprima.ai/getting-started
+- type: GitHubOrganization
+  url: https://github.com/causa-prima-ai
+- type: TermsOfService
+  url: https://causaprima.ai/terms
+- type: PrivacyPolicy
+  url: https://causaprima.ai/privacy
+- type: Compliance
+  url: https://scribo.causaprima.ai/compliance
+# --- artifacts ---
+- type: OpenAPI
+  url: openapi/causa-prima-scribo-openapi.json
+- type: LLMsTxt
+  url: llms/causa-prima-llms.txt
+- type: MCPServer
+  url: mcp/causa-prima-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: Packages
+  url: packages/causa-prima-packages.yml
+- type: CLI
+  url: cli/causa-prima-cli.yml
+- type: ErrorCatalog
+  url: errors/causa-prima-problem-types.yml
+- type: Conventions
+  url: conventions/causa-prima-conventions.yml
+- type: Idempotency
+  url: conventions/causa-prima-conventions.yml
+- type: DataModel
+  url: data-model/causa-prima-data-model.yml
+- type: Conformance
+  url: conformance/causa-prima-conformance.yml
+- type: Lifecycle
+  url: lifecycle/causa-prima-lifecycle.yml
+- type: Overlay
+  url: overlays/causa-prima-scribo-overlay.yaml
+- type: DomainSecurity
+  url: security/causa-prima-domain-security.yml
+- type: AgenticAccess
+  url: agentic-access/causa-prima-agentic-access.yml
+- type: Authentication
+  url: authentication/causa-prima-authentication.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

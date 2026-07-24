@@ -1,0 +1,47 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/causa-prima-scribo-openapi.json
+docs: https://scribo.causaprima.ai/docs/api
+authentication:
+  style: optional-bearer
+  detail: >-
+    Anonymous by default, rate-limited per IP. An optional
+    Authorization: Bearer <key> raises quotas for partner keys. First invoice per
+    sender email additionally requires an X-Email-Verification-Token (email-ownership
+    proof). See authentication/causa-prima-authentication.yml.
+idempotency:
+  supported: true
+  header: Idempotency-Key
+  scope: per POST /api/v1/invoices request (client-supplied, 1-255 chars)
+  behavior: >-
+    Replaying the same key with identical inputs returns the cached invoice;
+    replaying with different inputs returns 422 idempotency_key_mismatch.
+  retention: not documented
+pagination:
+  supported: false
+  detail: Single invoice per create call; GET /api/v1/jurisdictions returns a bounded array. No list pagination surface.
+versioning:
+  scheme: uri-path
+  current: v1
+  detail: Public surface is the /api/v1/* namespace. The internal /internal/scribo/* namespace is out of contract.
+error_envelope:
+  shape: '{ "error": { "code", "message", "details"? } }'
+  ref: errors/causa-prima-problem-types.yml
+rate_limit_signaling:
+  headers: [Retry-After]
+  body_fields: [retry_after_seconds, reset_at, limit_code]
+  limits:
+    per_ip: 600 req/min, 200 invoices/hour
+    per_sender: 5 invoices/min, 50 per 24h
+    verification: 1 send/30s and 5/hour per email; 10/min per IP
+  ref: rate-limits (see errors/causa-prima-problem-types.yml envelope)
+request_tracing:
+  supported: false
+  detail: No request-id / correlation header documented.
+streaming:
+  server_sent_events: true
+  detail: GET /api/v1/scribo/email-verifications/{id}/events streams verification challenge status transitions (SSE).
+numeric_fields:
+  note: >-
+    Numeric fields (quantity, unit_price, tax_rate) MUST be sent as strings, not
+    floats — a hard convention of the Scribo contract.

@@ -1,0 +1,20 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Scribo Invoice API
+  version: 1.0.0
+extends: openapi/causa-prima-scribo-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: causa-prima
+    x-apievangelist-product: scribo
+    x-apievangelist-category: e-invoicing
+    x-apievangelist-standards: [EN 16931, XRechnung, ZUGFeRD]
+- target: $.paths['/api/v1/invoices'].post
+  update:
+    x-apievangelist-idempotent: true
+    x-apievangelist-idempotency-header: Idempotency-Key
+    x-apievangelist-agent-ready: true
+- target: $.paths['/api/v1/scribo/email-verifications/{id}/events'].get
+  update:
+    x-apievangelist-streaming: server-sent-events

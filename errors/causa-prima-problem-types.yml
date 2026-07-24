@@ -1,0 +1,63 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/causa-prima-scribo-openapi.json
+docs: https://scribo.causaprima.ai/docs/troubleshooting
+format: custom-envelope        # NOT rfc9457 — errors are { "error": { "code", "message", "details" } }
+envelope:
+  shape: '{ "error": { "code": string, "message": string, "details"?: object } }'
+  rate_limit_fields: [retry_after_seconds, reset_at, limit_code]   # on 429 / tenant soft-block
+  headers:
+    Retry-After: seconds until the limit resets (429)
+problems:
+- code: invalid_input
+  status: 400
+  title: Invalid input or downstream validator rejection
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- code: unsupported_jurisdiction
+  status: 400
+  title: Sender jurisdiction not supported (Phase 1 = DE and US only)
+  remediation: Only DE and US senders are supported; do not attempt to draft for other sender countries.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- code: validator_failed
+  status: 400
+  title: EN 16931 / Invopop validator rejected the invoice
+  remediation: Inspect validator_summary.errors[] for the failing rule and path.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- code: email_verification_required
+  status: 401
+  title: Sender email not verified yet
+  remediation: Run the email-verification flow and retry with X-Email-Verification-Token.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- code: verification_email_mismatch
+  status: 403
+  title: Verified email does not match sender.contact_email
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- code: tenant_soft_blocked
+  status: 403
+  title: Tenant temporarily soft-blocked after repeated hard-limit hits
+  remediation: Wait until details.auto_lift_at; block auto-lifts.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- code: idempotency_key_mismatch
+  status: 422
+  title: Idempotency-Key replayed with different inputs
+  remediation: Reuse a key only with identical payloads; mint a new key for new inputs.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- code: rate_limited
+  status: 429
+  title: Rate limit exceeded
+  remediation: Back off using retry_after_seconds / reset_at.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- code: tenant_invoice_quota_exceeded
+  status: 429
+  title: Per-tenant invoice quota exceeded
+  remediation: Back off using retry_after_seconds / reset_at.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/invoices
+- code: verification_invalid
+  status: 400
+  title: Wrong, expired, or revoked verification code (uniform across all three causes)
+  remediation: Re-check the 6-character code; after 5 wrong attempts the challenge is revoked — request a new one.
+  source_operation: openapi/causa-prima-scribo-openapi.json#POST /api/v1/scribo/email-verifications/{id}/redeem
+- code: not_found
+  status: 404
+  title: Invoice / artifact not found or not visible to this caller
+  source_operation: openapi/causa-prima-scribo-openapi.json#GET /api/v1/invoices/{id}

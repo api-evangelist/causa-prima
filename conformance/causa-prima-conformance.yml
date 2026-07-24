@@ -1,0 +1,41 @@
+generated: '2026-07-18'
+method: searched
+source: openapi/causa-prima-scribo-openapi.json
+docs: https://scribo.causaprima.ai/compliance
+standards:
+- id: en-16931
+  conforms: true
+  evidence: >-
+    Core purpose — emits EN 16931-compliant e-invoices; every invoice is
+    validated at generate-time by the Invopop validator (validator_summary).
+- id: xrechnung
+  conforms: true
+  evidence: German B2G format (UBL + CII syntaxes) produced for Leitweg-ID recipients.
+- id: zugferd
+  conforms: true
+  evidence: German B2B hybrid PDF/A-3 with embedded factur-x.xml (BASIC, COMFORT profiles).
+- id: peppol-bis
+  conforms: false
+  evidence: Peppol BIS 3.0 (BE/NL/LU/AT) listed as Phase 2 — coming soon.
+- id: factur-x
+  conforms: false
+  evidence: France Factur-X listed as Phase 2 — coming soon.
+- id: facturae
+  conforms: false
+  evidence: Spain Facturae listed as Phase 2 — coming soon.
+- id: oauth2
+  conforms: false
+  evidence: Only optional http bearer key; no OAuth2/OIDC.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: 'Custom error envelope { error: { code, message, details } }, not application/problem+json.'
+- id: rfc-idempotency-key
+  conforms: true
+  evidence: Idempotency-Key request header on POST /api/v1/invoices with cached-replay + 422 mismatch semantics.
+compliance_program:
+  published: true
+  url: https://scribo.causaprima.ai/compliance
+  posture: >-
+    Invopop generate-time validation, retention defaults, and supported-format
+    status published on the compliance page. No third-party audit certifications
+    (SOC 2 / ISO 27001 / PCI) advertised.

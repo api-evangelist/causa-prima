@@ -1,0 +1,40 @@
+# Scribo
+
+> Free, EN 16931-compliant e-invoicing — ZUGFeRD/XRechnung for Germany, plain PDF for the US, more coming. Web UI, HTTP API, MCP server, CLI, or skill.
+
+Scribo is a free, EN 16931-compliant e-invoicing tool. It generates compliant invoices through five surfaces — a Web UI, an HTTP API, a hosted MCP server, an npm CLI, and a Claude / Codex skill — all backed by the same /api/v1 API. No credit card; the sender's email is the login, via a lightweight magic-link sign-in.
+
+## Integrations
+
+- [Scribo Skill for Claude, ChatGPT & Codex](https://scribo.causaprima.ai/docs/skill): Install the Scribo skill in Claude.ai, Claude Code, Claude Desktop, Cowork, ChatGPT, or Codex CLI — /plugin install, git clone, or .zip upload.
+- [Scribo MCP Server](https://scribo.causaprima.ai/docs/mcp): Hosted Scribo MCP server at scribo.causaprima.ai/mcp — connect Claude Desktop, Cursor, Cline, ChatGPT App, or Codex CLI over Streamable HTTP. No install.
+- [Scribo CLI](https://scribo.causaprima.ai/docs/cli): Generate EN 16931 e-invoices from the terminal with @causaprima/scribo-cli — create, get, download, jurisdictions. Sysexits-style exit codes for CI use.
+- [Scribo HTTP API](https://scribo.causaprima.ai/docs/api): REST reference for the Scribo /api/v1 public API — generate EN 16931 e-invoices, verify sender emails, list jurisdictions. Anonymous, rate-limited per IP.
+
+## Reference
+
+- [Jurisdictions & Format Selection](https://scribo.causaprima.ai/docs/jurisdictions): How Scribo picks the e-invoice format per jurisdiction — the deterministic priority chain and per-format mandatory fields. Phase 1 covers Germany and the US.
+- [EN 16931 Tax Category Codes](https://scribo.causaprima.ai/docs/tax-codes): How to pick the EN 16931 tax category code (S, Z, E, AE, K, G, O) per invoice line. Scribo never infers — the caller picks. Decision flow + constraints.
+- [Troubleshooting](https://scribo.causaprima.ai/docs/troubleshooting): Every error code Scribo emits — rate limits, email verification, idempotency, validator, jurisdiction, not-found, 5xx — with shapes and recovery steps.
+
+## Glossary
+
+- [What Is XRechnung? Germany's B2G E-Invoice Standard, Explained](https://scribo.causaprima.ai/glossary/xrechnung): XRechnung is the structured XML e-invoice format mandatory for billing German public authorities. What it is, UBL vs CII, when it's required, the Leitweg-ID, and how to create one.
+- [What Is ZUGFeRD? The Hybrid PDF/XML E-Invoice Format, Explained](https://scribo.causaprima.ai/glossary/zugferd): ZUGFeRD is a German hybrid e-invoice: a readable PDF with EN 16931 XML embedded inside it. What it is, the profiles (BASIC, COMFORT), which satisfy the mandate, and how to create one.
+- [ZUGFeRD vs XRechnung: Which German E-Invoice Format Do You Need?](https://scribo.causaprima.ai/glossary/zugferd-vs-xrechnung): ZUGFeRD and XRechnung are both German EN 16931 e-invoice formats. The difference: ZUGFeRD is a hybrid PDF for B2B, XRechnung is pure XML for B2G. A clear comparison and decision guide.
+- [What Is EN 16931? The European E-Invoicing Standard, Explained](https://scribo.causaprima.ai/glossary/en-16931): EN 16931 is the European standard that defines a common data model for electronic invoices. What it covers, the legal basis, syntaxes, and how national formats like XRechnung and ZUGFeRD relate to it.
+- [Germany's B2B E-Invoicing Mandate (2025–2028): Timeline & Formats](https://scribo.causaprima.ai/glossary/german-e-invoicing-mandate): Germany is phasing in mandatory structured e-invoices for domestic B2B. A factual overview of the timeline — receive capability in 2025, issuing obligations in 2027 and 2028 — and which formats qualify.
+
+## Comparisons
+
+- [Scribo vs sevDesk: Free E-Invoicing vs German Accounting Suite (2026)](https://scribo.causaprima.ai/compare/scribo-vs-sevdesk): How Scribo and sevDesk compare for compliant German e-invoicing — price, XRechnung and ZUGFeRD support, API and agent access, and accounting scope. A factual side-by-side.
+- [Scribo vs Lexware Office (lexoffice): Free E-Invoicing Compared (2026)](https://scribo.causaprima.ai/compare/scribo-vs-lexware-office): Scribo vs Lexware Office (formerly lexoffice) for compliant German e-invoicing — price, XRechnung and ZUGFeRD support, API access, DATEV, and accounting scope. A factual side-by-side.
+- [Scribo vs Stripe Invoicing: EU-Compliant XML vs Payment-Layer PDFs (2026)](https://scribo.causaprima.ai/compare/scribo-vs-stripe-invoicing): Scribo vs Stripe Invoicing — Stripe sends polished PDFs and collects payment, but doesn't produce EN 16931 XML. How they compare, and why many teams use both.
+- [Best Free E-Invoicing Tools for EN 16931 (XRechnung, ZUGFeRD) in 2026](https://scribo.causaprima.ai/compare/best-free-e-invoicing-tools): Most 'free' invoicing tools only export PDFs. A factual rundown of the options for genuinely free, EN 16931-compliant e-invoices — XRechnung, ZUGFeRD — and where each one fits.
+
+## Authoritative sources
+
+- [Getting Started](https://scribo.causaprima.ai/getting-started): step-by-step walkthrough for new users sending their first compliant invoice
+- [OpenAPI 3.1 spec](https://scribo.causaprima.ai/api/v1/openapi.json): canonical contract for the public /api/v1 HTTP API
+- [Compliance posture](https://scribo.causaprima.ai/compliance): Invopop generate-time validation, retention defaults, supported-format status
+- [llms-full.txt](https://scribo.causaprima.ai/llms-full.txt): concatenated full markdown content of every docs page

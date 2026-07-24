@@ -1,0 +1,44 @@
+generated: '2026-07-18'
+method: derived
+source: openapi/causa-prima-scribo-openapi.json
+entities:
+- name: Invoice
+  id_field: invoice_id
+  id_format: uuid
+  fields: [invoice_id, document_id, format, download_url, download_url_expires_at, preview_url, submission, validator_summary, magic_link_sent, recipient_email_sent]
+  relationships:
+  - has_one: Document
+    via: document_id
+- name: CreateInvoiceInput
+  role: request
+  embeds: [sender, recipient, line_items, payment_means, delivery_period]
+  relationships:
+  - has_one: Sender
+    via: sender
+  - has_one: Recipient
+    via: recipient
+  - has_many: LineItem
+    via: line_items
+- name: LineItem
+  fields: [description, quantity, unit_code, unit_price, tax_rate, tax_category_code, discount, tax_exemption_code, tax_exemption_reason]
+- name: VerificationChallenge
+  id_field: challenge_id
+  id_format: uuid
+  fields: [challenge_id, expires_at, next_request_allowed_at]
+  relationships:
+  - produces: VerificationToken
+    via: redeem
+- name: VerificationToken
+  fields: [verification_token, expires_at]
+- name: JurisdictionEntry
+  id_field: jurisdiction
+  fields: [jurisdiction, formats, default_format]
+formats:
+  enum: [zugferd_comfort, zugferd_basic, xrechnung_cii, xrechnung_ubl, plain_pdf]
+tax_category_codes:
+  enum: [S, Z, E, AE, K, G, O]
+notes: >-
+  Derived from OpenAPI component schemas and $ref links. Scribo is a document
+  generator — the core aggregate is Invoice (with an embedded Sender/Recipient
+  and a LineItem collection); email verification is a side flow producing a
+  reusable VerificationToken.

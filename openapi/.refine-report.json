@@ -1,0 +1,18 @@
+{
+  "provider": "causa-prima",
+  "sources": [
+    "causa-prima-invoices-api-openapi.yml",
+    "causa-prima-jurisdictions-api-openapi.yml",
+    "causa-prima-scribo-api-openapi.yml"
+  ],
+  "outputs": [
+    "causa-prima-invoices-api-openapi.yml",
+    "causa-prima-jurisdictions-api-openapi.yml",
+    "causa-prima-scribo-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

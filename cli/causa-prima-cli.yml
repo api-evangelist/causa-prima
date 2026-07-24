@@ -1,0 +1,40 @@
+generated: '2026-07-18'
+method: searched
+source: https://github.com/causa-prima-ai/scribo-cli
+docs: https://scribo.causaprima.ai/docs/cli
+name: scribo
+binary: scribo
+package: "@causaprima/scribo-cli"        # catalogued in packages/causa-prima-packages.yml
+install:
+- method: npm-global
+  command: npm install -g @causaprima/scribo-cli
+- method: npx
+  command: npx @causaprima/scribo-cli <command>
+commands:
+- name: create
+  summary: Generate an invoice and save it locally.
+  flags: ["-o FILE", "--from invoice.json", "--sender-name", "--recipient-email", "--currency", "--line (repeatable)", "--due-date", "--payment-iban", "--verification-token", "--no-prompt"]
+  api: POST /api/v1/invoices
+- name: get
+  summary: Retrieve invoice metadata as JSON, including a refreshed download URL.
+  args: ["<invoiceId>"]
+  flags: ["--json"]
+  api: GET /api/v1/invoices/{id}
+- name: download
+  summary: Stream invoice bytes to a file.
+  args: ["<invoiceId>"]
+  flags: ["-o FILE"]
+  api: GET /api/v1/invoices/{id}/download
+- name: jurisdictions
+  summary: Display the supported jurisdictions matrix.
+  flags: ["--json"]
+  api: GET /api/v1/jurisdictions
+flows:
+- name: email-verification
+  description: >-
+    First invoice from a sender email triggers verification — a 6-digit code is
+    emailed. In CI, --no-prompt prints the challenge and exits with code 75.
+- name: ci-exit-codes
+  description: >-
+    Scripts can branch on BSD sysexits (0, 64, 65, 66, 70, 75, 1) for error
+    handling in CI pipelines.
