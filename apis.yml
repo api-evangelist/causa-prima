@@ -115,7 +115,7 @@ common:
   url: https://scribo.causaprima.ai/compliance
 # --- artifacts ---
 - type: OpenAPI
-  url: openapi/causa-prima-scribo-openapi.json
+  url: openapi/_original/causa-prima-scribo-openapi.json
 - type: LLMsTxt
   url: llms/causa-prima-llms.txt
 - type: MCPServer
