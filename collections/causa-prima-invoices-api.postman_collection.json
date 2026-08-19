@@ -1,0 +1,721 @@
+{
+  "item": [
+    {
+      "id": "7e310bba-4e9a-4f77-975d-f1e59d1d1f45",
+      "name": "Invoices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "879e0280-0dce-41d5-b4a9-f7ae266c893a",
+          "name": "Generate a compliant e-invoice",
+          "request": {
+            "name": "Generate a compliant e-invoice",
+            "description": {
+              "content": "Anonymous endpoint. Rate-limited per source IP. Returns 201 with a download URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "invoices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "key": "Idempotency-Key",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "disabled": false,
+                "key": "X-Email-Verification-Token",
+                "value": "<string>",
+                "description": ""
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"sender\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"contact_phone\": \"<string>\",\n    \"contact_name\": \"<string>\",\n    \"tax_registration_id\": \"<string>\"\n  },\n  \"recipient\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"leitweg_id\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<string>\",\n      \"unit_price\": \"<string>\",\n      \"tax_rate\": \"<string>\",\n      \"tax_category_code\": \"<string>\",\n      \"unit_code\": \"EA\",\n      \"discount\": {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"reason\": \"<string>\"\n      },\n      \"tax_exemption_code\": \"<string>\",\n      \"tax_exemption_reason\": \"<string>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"jurisdiction\": \"<string>\",\n  \"format_override\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"invoice_number\": \"<string>\",\n  \"issue_date\": \"<string>\",\n  \"due_date\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"payment_means\": {\n    \"type\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_name\": \"<string>\",\n    \"bank\": \"<string>\"\n  },\n  \"delivery_date\": \"<string>\",\n  \"delivery_period\": {\n    \"start\": \"<string>\",\n    \"end\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0646a8ee-9089-411b-892a-61bba6a5b238",
+              "name": "Invoice generated and persisted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Idempotency-Key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Email-Verification-Token",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"contact_phone\": \"<string>\",\n    \"contact_name\": \"<string>\",\n    \"tax_registration_id\": \"<string>\"\n  },\n  \"recipient\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"leitweg_id\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<string>\",\n      \"unit_price\": \"<string>\",\n      \"tax_rate\": \"<string>\",\n      \"tax_category_code\": \"<string>\",\n      \"unit_code\": \"EA\",\n      \"discount\": {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"reason\": \"<string>\"\n      },\n      \"tax_exemption_code\": \"<string>\",\n      \"tax_exemption_reason\": \"<string>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"jurisdiction\": \"<string>\",\n  \"format_override\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"invoice_number\": \"<string>\",\n  \"issue_date\": \"<string>\",\n  \"due_date\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"payment_means\": {\n    \"type\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_name\": \"<string>\",\n    \"bank\": \"<string>\"\n  },\n  \"delivery_date\": \"<string>\",\n  \"delivery_period\": {\n    \"start\": \"<string>\",\n    \"end\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoice_id\": \"d9738ce8-b558-5004-ee38-2f0653c6db5d\",\n  \"document_id\": \"322c6a2c-7520-0287-17d6-a2a4294d68e6\",\n  \"format\": \"xrechnung_cii\",\n  \"download_url\": \"https://IMvfmTqvynUx.goqFh4oSctn9MyHaxmCho5mSOQlRc\",\n  \"download_url_expires_at\": \"2000-12-15T01:44:15.513Z\",\n  \"validator_summary\": {\n    \"valid\": false,\n    \"validator\": \"string\"\n  },\n  \"magic_link_sent\": true,\n  \"preview_url\": \"http://gxKAhNeuIAXtbrWlmdLtszfgMvuGUcwk.kpyImQkcXW0KL4QPF7cHmTG1ZomrcvU+SCVjUov0AKzwO+3.PisT\",\n  \"preview_url_expires_at\": \"1992-12-29T06:39:00.514Z\",\n  \"submission\": {\n    \"status\": \"not_provided\",\n    \"message\": \"string\"\n  },\n  \"recipient_email_sent\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "20ab7982-86e8-4487-b87a-658cb71a6c67",
+              "name": "Invalid input or downstream validator rejection",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Idempotency-Key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Email-Verification-Token",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"contact_phone\": \"<string>\",\n    \"contact_name\": \"<string>\",\n    \"tax_registration_id\": \"<string>\"\n  },\n  \"recipient\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"leitweg_id\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<string>\",\n      \"unit_price\": \"<string>\",\n      \"tax_rate\": \"<string>\",\n      \"tax_category_code\": \"<string>\",\n      \"unit_code\": \"EA\",\n      \"discount\": {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"reason\": \"<string>\"\n      },\n      \"tax_exemption_code\": \"<string>\",\n      \"tax_exemption_reason\": \"<string>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"jurisdiction\": \"<string>\",\n  \"format_override\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"invoice_number\": \"<string>\",\n  \"issue_date\": \"<string>\",\n  \"due_date\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"payment_means\": {\n    \"type\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_name\": \"<string>\",\n    \"bank\": \"<string>\"\n  },\n  \"delivery_date\": \"<string>\",\n  \"delivery_period\": {\n    \"start\": \"<string>\",\n    \"end\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"invalid_input\",\n    \"message\": \"string\",\n    \"details\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f25f3e7-8b80-4d94-9f2c-ee1bd3fc3db8",
+              "name": "Sender email not verified yet (email_verification_required) — run the email-verification flow and retry with X-Email-Verification-Token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Idempotency-Key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Email-Verification-Token",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"contact_phone\": \"<string>\",\n    \"contact_name\": \"<string>\",\n    \"tax_registration_id\": \"<string>\"\n  },\n  \"recipient\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"leitweg_id\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<string>\",\n      \"unit_price\": \"<string>\",\n      \"tax_rate\": \"<string>\",\n      \"tax_category_code\": \"<string>\",\n      \"unit_code\": \"EA\",\n      \"discount\": {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"reason\": \"<string>\"\n      },\n      \"tax_exemption_code\": \"<string>\",\n      \"tax_exemption_reason\": \"<string>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"jurisdiction\": \"<string>\",\n  \"format_override\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"invoice_number\": \"<string>\",\n  \"issue_date\": \"<string>\",\n  \"due_date\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"payment_means\": {\n    \"type\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_name\": \"<string>\",\n    \"bank\": \"<string>\"\n  },\n  \"delivery_date\": \"<string>\",\n  \"delivery_period\": {\n    \"start\": \"<string>\",\n    \"end\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"invalid_input\",\n    \"message\": \"string\",\n    \"details\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0e4bdff-8e59-4f37-9102-108aac3373b3",
+              "name": "Verified email does not match sender.contact_email (verification_email_mismatch), or tenant is temporarily soft-blocked after repeated hard-limit hits (tenant_soft_blocked)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Idempotency-Key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Email-Verification-Token",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"contact_phone\": \"<string>\",\n    \"contact_name\": \"<string>\",\n    \"tax_registration_id\": \"<string>\"\n  },\n  \"recipient\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"leitweg_id\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<string>\",\n      \"unit_price\": \"<string>\",\n      \"tax_rate\": \"<string>\",\n      \"tax_category_code\": \"<string>\",\n      \"unit_code\": \"EA\",\n      \"discount\": {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"reason\": \"<string>\"\n      },\n      \"tax_exemption_code\": \"<string>\",\n      \"tax_exemption_reason\": \"<string>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"jurisdiction\": \"<string>\",\n  \"format_override\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"invoice_number\": \"<string>\",\n  \"issue_date\": \"<string>\",\n  \"due_date\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"payment_means\": {\n    \"type\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_name\": \"<string>\",\n    \"bank\": \"<string>\"\n  },\n  \"delivery_date\": \"<string>\",\n  \"delivery_period\": {\n    \"start\": \"<string>\",\n    \"end\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"invalid_input\",\n    \"message\": \"string\",\n    \"details\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2b7311c-4a60-4d3c-935a-79647f9dbbbd",
+              "name": "Idempotency-Key mismatch",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Idempotency-Key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Email-Verification-Token",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"contact_phone\": \"<string>\",\n    \"contact_name\": \"<string>\",\n    \"tax_registration_id\": \"<string>\"\n  },\n  \"recipient\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"leitweg_id\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<string>\",\n      \"unit_price\": \"<string>\",\n      \"tax_rate\": \"<string>\",\n      \"tax_category_code\": \"<string>\",\n      \"unit_code\": \"EA\",\n      \"discount\": {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"reason\": \"<string>\"\n      },\n      \"tax_exemption_code\": \"<string>\",\n      \"tax_exemption_reason\": \"<string>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"jurisdiction\": \"<string>\",\n  \"format_override\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"invoice_number\": \"<string>\",\n  \"issue_date\": \"<string>\",\n  \"due_date\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"payment_means\": {\n    \"type\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_name\": \"<string>\",\n    \"bank\": \"<string>\"\n  },\n  \"delivery_date\": \"<string>\",\n  \"delivery_period\": {\n    \"start\": \"<string>\",\n    \"end\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"invalid_input\",\n    \"message\": \"string\",\n    \"details\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9bdf778-c6cd-4192-905a-66de9c08e935",
+              "name": "Rate limit exceeded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "disabled": false,
+                    "key": "Idempotency-Key",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "disabled": false,
+                    "key": "X-Email-Verification-Token",
+                    "value": "<string>",
+                    "description": ""
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"sender\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"contact_phone\": \"<string>\",\n    \"contact_name\": \"<string>\",\n    \"tax_registration_id\": \"<string>\"\n  },\n  \"recipient\": {\n    \"legal_name\": \"<string>\",\n    \"country_code\": \"<string>\",\n    \"address_line1\": \"<string>\",\n    \"postcode\": \"<string>\",\n    \"city\": \"<string>\",\n    \"contact_email\": \"<email>\",\n    \"address_line2\": \"<string>\",\n    \"tax_id\": \"<string>\",\n    \"leitweg_id\": \"<string>\"\n  },\n  \"line_items\": [\n    {\n      \"description\": \"<string>\",\n      \"quantity\": \"<string>\",\n      \"unit_price\": \"<string>\",\n      \"tax_rate\": \"<string>\",\n      \"tax_category_code\": \"<string>\",\n      \"unit_code\": \"EA\",\n      \"discount\": {\n        \"type\": \"<string>\",\n        \"value\": \"<string>\",\n        \"reason\": \"<string>\"\n      },\n      \"tax_exemption_code\": \"<string>\",\n      \"tax_exemption_reason\": \"<string>\"\n    }\n  ],\n  \"currency\": \"<string>\",\n  \"jurisdiction\": \"<string>\",\n  \"format_override\": \"<string>\",\n  \"notes\": \"<string>\",\n  \"invoice_number\": \"<string>\",\n  \"issue_date\": \"<string>\",\n  \"due_date\": \"<string>\",\n  \"payment_terms\": \"<string>\",\n  \"payment_means\": {\n    \"type\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"bic\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_number\": \"<string>\",\n    \"account_name\": \"<string>\",\n    \"bank\": \"<string>\"\n  },\n  \"delivery_date\": \"<string>\",\n  \"delivery_period\": {\n    \"start\": \"<string>\",\n    \"end\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "Seconds until the limit resets.",
+                  "key": "Retry-After",
+                  "value": "7138"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"tenant_invoice_quota_exceeded\",\n    \"message\": \"string\",\n    \"retry_after_seconds\": 5734,\n    \"reset_at\": \"1973-06-21T15:18:02.839Z\",\n    \"limit_code\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5a624a88-bc6e-4569-9d25-3f322f40f022",
+          "name": "Fetch invoice metadata",
+          "request": {
+            "name": "Fetch invoice metadata",
+            "description": {
+              "content": "Returns the Invoice for a previously-generated invoice. Read path is wired alongside the scribo session cookie; cross-tenant probes return 404.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "invoices",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "89a27621-7c9c-460c-a620-616dd3bb1dec",
+              "name": "Invoice metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"invoice_id\": \"d9738ce8-b558-5004-ee38-2f0653c6db5d\",\n  \"document_id\": \"322c6a2c-7520-0287-17d6-a2a4294d68e6\",\n  \"format\": \"xrechnung_cii\",\n  \"download_url\": \"https://IMvfmTqvynUx.goqFh4oSctn9MyHaxmCho5mSOQlRc\",\n  \"download_url_expires_at\": \"2000-12-15T01:44:15.513Z\",\n  \"validator_summary\": {\n    \"valid\": false,\n    \"validator\": \"string\"\n  },\n  \"magic_link_sent\": true,\n  \"preview_url\": \"http://gxKAhNeuIAXtbrWlmdLtszfgMvuGUcwk.kpyImQkcXW0KL4QPF7cHmTG1ZomrcvU+SCVjUov0AKzwO+3.PisT\",\n  \"preview_url_expires_at\": \"1992-12-29T06:39:00.514Z\",\n  \"submission\": {\n    \"status\": \"not_provided\",\n    \"message\": \"string\"\n  },\n  \"recipient_email_sent\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "43383f45-39bc-4708-8be2-a2b38dc82b89",
+              "name": "Invoice not found or not visible to this caller",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"invalid_input\",\n    \"message\": \"string\",\n    \"details\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea7df1b2-1fd3-440b-95ef-6a98bc5d355e",
+          "name": "Download the invoice file",
+          "request": {
+            "name": "Download the invoice file",
+            "description": {
+              "content": "Streams the generated PDF (or hybrid PDF/A-3 with embedded XML) bytes. Future revisions may 302 to a signed object-storage URL.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "invoices",
+                ":id",
+                "download"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/pdf"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c9d678be-dc54-4c25-a834-7d5294c785ee",
+              "name": "Invoice bytes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices",
+                    ":id",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/pdf"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/pdf"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8dae5925-3133-4b9e-bcac-6342d0ea37e0",
+              "name": "Artifact not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "invoices",
+                    ":id",
+                    "download"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"error\": {\n    \"code\": \"invalid_input\",\n    \"message\": \"string\",\n    \"details\": \"\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://scribo.causaprima.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "07ffca37-77c6-429f-aa52-eb10c63cbd39",
+    "name": "Scribo Invoice Invoices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Compliant e-invoice generation. **Phase 1 supports Germany (XRechnung / ZUGFeRD) and the United States (plain PDF) only** — any other sender jurisdiction is rejected with `unsupported_jurisdiction`. The `/api/v1/*` namespace served from `scribo.causaprima.ai` is the public surface — anonymous and rate-limited. The internal `/internal/scribo/*` namespace is used by the Causa Prima web app and MCP server and is not part of this contract.\n\nContact Support:\n Name: Causa Prima",
+      "type": "text/plain"
+    }
+  }
+}

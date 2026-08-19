@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Scribo Invoice Invoices API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate a compliant e-invoice",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://scribo.causaprima.ai/api/v1/invoices",
+            "headers": [
+              {
+                "name": "Idempotency-Key",
+                "value": ""
+              },
+              {
+                "name": "X-Email-Verification-Token",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Anonymous endpoint. Rate-limited per source IP. Returns 201 with a download URL."
+        },
+        {
+          "info": {
+            "name": "Fetch invoice metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://scribo.causaprima.ai/api/v1/invoices/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns the Invoice for a previously-generated invoice. Read path is wired alongside the scribo session cookie; cross-tenant probes return 404."
+        },
+        {
+          "info": {
+            "name": "Download the invoice file",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://scribo.causaprima.ai/api/v1/invoices/:id/download",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Streams the generated PDF (or hybrid PDF/A-3 with embedded XML) bytes. Future revisions may 302 to a signed object-storage URL."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

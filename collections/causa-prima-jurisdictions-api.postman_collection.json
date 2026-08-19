@@ -1,0 +1,103 @@
+{
+  "item": [
+    {
+      "id": "9bcbc02a-6ef0-4e00-92fc-d726583f07f8",
+      "name": "Jurisdictions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c58e3f2f-4855-41aa-99ca-0670fded1032",
+          "name": "List supported jurisdictions and formats",
+          "request": {
+            "name": "List supported jurisdictions and formats",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "jurisdictions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87a785fb-306c-4585-8d61-45eeb13b0748",
+              "name": "Supported jurisdictions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1",
+                    "jurisdictions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"jurisdiction\": \"OW\",\n    \"formats\": [\n      \"xrechnung_cii\",\n      \"xrechnung_cii\"\n    ],\n    \"default_format\": \"xrechnung_ubl\"\n  },\n  {\n    \"jurisdiction\": \"BO\",\n    \"formats\": [\n      \"plain_pdf\",\n      \"xrechnung_ubl\"\n    ],\n    \"default_format\": \"zugferd_basic\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://scribo.causaprima.ai",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f99b0d74-7b4c-404c-89e6-96b05b86b601",
+    "name": "Scribo Invoice Invoices Jurisdictions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Compliant e-invoice generation. **Phase 1 supports Germany (XRechnung / ZUGFeRD) and the United States (plain PDF) only** — any other sender jurisdiction is rejected with `unsupported_jurisdiction`. The `/api/v1/*` namespace served from `scribo.causaprima.ai` is the public surface — anonymous and rate-limited. The internal `/internal/scribo/*` namespace is used by the Causa Prima web app and MCP server and is not part of this contract.\n\nContact Support:\n Name: Causa Prima",
+      "type": "text/plain"
+    }
+  }
+}

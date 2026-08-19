@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Scribo Invoice Invoices Jurisdictions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jurisdictions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List supported jurisdictions and formats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://scribo.causaprima.ai/api/v1/jurisdictions"
+          },
+          "docs": "List supported jurisdictions and formats"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
