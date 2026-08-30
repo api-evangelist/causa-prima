@@ -118,6 +118,11 @@ apis:
   - type: APIReference
     url: https://scribo.causaprima.ai/docs/api
 common:
+- type: ParentCompany
+  url: https://apis.io/providers/sap/
+  name: SAP
+  x-relationship: acquired
+  x-evidence: "The team previously built Taulia (acquired by SAP) and Finoa; Causa Prima is backed by Creandum."
 # --- identity / link properties ---
 - type: Website
   url: https://causaprima.ai/
