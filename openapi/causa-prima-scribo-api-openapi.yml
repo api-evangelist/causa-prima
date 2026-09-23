@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Invoice Invoices Scribo API
+  title: Invoice Scribo API
   version: 1.0.0
   description: Compliant e-invoice generation. **Phase 1 supports Germany (XRechnung / ZUGFeRD) and the United States (plain PDF) only** — any other sender jurisdiction is rejected with `unsupported_jurisdiction`. The `/api/v1/*` namespace served from `scribo.causaprima.ai` is the public surface — anonymous and rate-limited. The internal `/internal/scribo/*` namespace is used by the Causa Prima web app and MCP server and is not part of this contract.
   contact:
@@ -39,6 +39,8 @@ paths:
                 $ref: '#/components/schemas/ErrorEnvelope'
       tags:
       - Scribo
+      operationId: postApiV1ScriboEmailVerifications
+      x-operation-id-source: derived
   /api/v1/scribo/email-verifications/{id}/redeem:
     post:
       summary: Redeem the emailed code for a verification token
@@ -72,6 +74,8 @@ paths:
                 $ref: '#/components/schemas/ErrorEnvelope'
       tags:
       - Scribo
+      operationId: postApiV1ScriboEmailVerificationsByIdRedeem
+      x-operation-id-source: derived
   /api/v1/scribo/email-verifications/{id}:
     get:
       summary: Verification challenge status snapshot
@@ -93,6 +97,8 @@ paths:
                 $ref: '#/components/schemas/VerificationSnapshot'
       tags:
       - Scribo
+      operationId: getApiV1ScriboEmailVerificationsById
+      x-operation-id-source: derived
   /api/v1/scribo/email-verifications/{id}/events:
     get:
       summary: Verification challenge event stream
@@ -114,19 +120,10 @@ paths:
                 type: string
       tags:
       - Scribo
+      operationId: getApiV1ScriboEmailVerificationsByIdEvents
+      x-operation-id-source: derived
 components:
   schemas:
-    VerificationToken:
-      type: object
-      properties:
-        verification_token:
-          type: string
-        expires_at:
-          type: string
-          format: date-time
-      required:
-      - verification_token
-      - expires_at
     VerificationSnapshot:
       oneOf:
       - type: object
@@ -170,23 +167,17 @@ components:
             - revoked
         required:
         - status
-    ErrorEnvelope:
+    VerificationToken:
       type: object
       properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              example: invalid_input
-            message:
-              type: string
-            details: {}
-          required:
-          - code
-          - message
+        verification_token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
       required:
-      - error
+      - verification_token
+      - expires_at
     RequestVerificationInput:
       type: object
       properties:
@@ -197,16 +188,6 @@ components:
           format: email
       required:
       - email
-      additionalProperties: false
-    RedeemVerificationInput:
-      type: object
-      properties:
-        code:
-          type: string
-          minLength: 1
-          maxLength: 64
-      required:
-      - code
       additionalProperties: false
     VerificationChallenge:
       type: object
@@ -224,6 +205,33 @@ components:
       - challenge_id
       - expires_at
       - next_request_allowed_at
+    ErrorEnvelope:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: invalid_input
+            message:
+              type: string
+            details: {}
+          required:
+          - code
+          - message
+      required:
+      - error
+    RedeemVerificationInput:
+      type: object
+      properties:
+        code:
+          type: string
+          minLength: 1
+          maxLength: 64
+      required:
+      - code
+      additionalProperties: false
   securitySchemes:
     bearerAuth:
       type: http

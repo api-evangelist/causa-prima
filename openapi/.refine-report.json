@@ -1,9 +1,7 @@
 {
   "provider": "causa-prima",
   "sources": [
-    "causa-prima-invoices-api-openapi.yml",
-    "causa-prima-jurisdictions-api-openapi.yml",
-    "causa-prima-scribo-api-openapi.yml"
+    "_original/causa-prima-scribo-openapi.json"
   ],
   "outputs": [
     "causa-prima-invoices-api-openapi.yml",
@@ -13,6 +11,25 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "causa-prima-scribo-openapi.json: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "causa-prima-scribo-openapi.json: tagged paths POST /api/v1/invoices -> Invoices",
+    "causa-prima-scribo-openapi.json: tagged paths GET /api/v1/invoices/{id} -> Invoices",
+    "causa-prima-scribo-openapi.json: tagged paths GET /api/v1/invoices/{id}/download -> Invoices",
+    "causa-prima-scribo-openapi.json: tagged paths POST /api/v1/scribo/email-verifications -> Scribo",
+    "causa-prima-scribo-openapi.json: tagged paths POST /api/v1/scribo/email-verifications/{id}/redeem -> Scribo",
+    "causa-prima-scribo-openapi.json: tagged paths GET /api/v1/scribo/email-verifications/{id} -> Scribo",
+    "causa-prima-scribo-openapi.json: tagged paths GET /api/v1/scribo/email-verifications/{id}/events -> Scribo",
+    "causa-prima-scribo-openapi.json: tagged paths GET /api/v1/jurisdictions -> Jurisdictions",
+    "causa-prima-scribo-openapi.json: declared missing tag: Invoices",
+    "causa-prima-scribo-openapi.json: declared missing tag: Jurisdictions",
+    "causa-prima-scribo-openapi.json: declared missing tag: Scribo",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "causa-prima-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "causa-prima-jurisdictions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "causa-prima-scribo-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Scribo Invoice Invoices API
   version: 1.0.0
@@ -86,6 +86,8 @@ paths:
                 $ref: '#/components/schemas/RateLimitError'
       tags:
       - Invoices
+      operationId: postApiV1Invoices
+      x-operation-id-source: derived
   /api/v1/invoices/{id}:
     get:
       summary: Fetch invoice metadata
@@ -113,6 +115,8 @@ paths:
                 $ref: '#/components/schemas/ErrorEnvelope'
       tags:
       - Invoices
+      operationId: getApiV1InvoicesById
+      x-operation-id-source: derived
   /api/v1/invoices/{id}/download:
     get:
       summary: Download the invoice file
@@ -140,106 +144,54 @@ paths:
                 $ref: '#/components/schemas/ErrorEnvelope'
       tags:
       - Invoices
+      operationId: getApiV1InvoicesByIdDownload
+      x-operation-id-source: derived
 components:
   schemas:
-    Invoice:
+    TenantSoftBlockError:
       type: object
       properties:
-        invoice_id:
-          type: string
-          format: uuid
-        document_id:
-          type: string
-          format: uuid
-        format:
-          type: string
-          enum:
-          - zugferd_comfort
-          - zugferd_basic
-          - xrechnung_cii
-          - xrechnung_ubl
-          - plain_pdf
-        download_url:
-          type: string
-          format: uri
-        download_url_expires_at:
-          type: string
-          format: date-time
-        preview_url:
-          type: string
-          format: uri
-        preview_url_expires_at:
-          type: string
-          format: date-time
-        submission:
+        error:
           type: object
           properties:
-            status:
+            code:
               type: string
               enum:
-              - not_provided
+              - tenant_soft_blocked
             message:
               type: string
-            manual_upload_hints:
-              type: array
-              items:
-                type: object
-                properties:
-                  label:
-                    type: string
-                  url:
-                    type: string
-                    format: uri
-                  leitweg_prefix:
-                    type: string
-                required:
-                - label
-                - url
-              default: []
-            planned:
-              type: array
-              items:
-                type: string
-              default: []
-          required:
-          - status
-          - message
-        validator_summary:
-          type: object
-          properties:
-            valid:
-              type: boolean
-            validator:
+            retry_after_seconds:
+              type: integer
+              minimum: 0
+            reset_at:
               type: string
-            errors:
-              type: array
-              items:
-                type: object
-                properties:
-                  path:
-                    type: string
-                  rule:
-                    type: string
-                  message:
-                    type: string
-                required:
-                - message
-              default: []
+              format: date-time
+            limit_code:
+              type: string
+              enum:
+              - tenant_hard_limit_hits_per_hour
+            details:
+              type: object
+              properties:
+                reason_code:
+                  type: string
+                  enum:
+                  - tenant_hard_limit_hits_per_hour
+                auto_lift_at:
+                  type: string
+                  format: date-time
+              required:
+              - reason_code
+              - auto_lift_at
           required:
-          - valid
-          - validator
-        magic_link_sent:
-          type: boolean
-        recipient_email_sent:
-          type: boolean
+          - code
+          - message
+          - retry_after_seconds
+          - reset_at
+          - limit_code
+          - details
       required:
-      - invoice_id
-      - document_id
-      - format
-      - download_url
-      - download_url_expires_at
-      - validator_summary
-      - magic_link_sent
+      - error
     RateLimitError:
       type: object
       properties:
@@ -550,50 +502,104 @@ components:
           - message
       required:
       - error
-    TenantSoftBlockError:
+    Invoice:
       type: object
       properties:
-        error:
+        invoice_id:
+          type: string
+          format: uuid
+        document_id:
+          type: string
+          format: uuid
+        format:
+          type: string
+          enum:
+          - zugferd_comfort
+          - zugferd_basic
+          - xrechnung_cii
+          - xrechnung_ubl
+          - plain_pdf
+        download_url:
+          type: string
+          format: uri
+        download_url_expires_at:
+          type: string
+          format: date-time
+        preview_url:
+          type: string
+          format: uri
+        preview_url_expires_at:
+          type: string
+          format: date-time
+        submission:
           type: object
           properties:
-            code:
+            status:
               type: string
               enum:
-              - tenant_soft_blocked
+              - not_provided
             message:
               type: string
-            retry_after_seconds:
-              type: integer
-              minimum: 0
-            reset_at:
-              type: string
-              format: date-time
-            limit_code:
-              type: string
-              enum:
-              - tenant_hard_limit_hits_per_hour
-            details:
-              type: object
-              properties:
-                reason_code:
-                  type: string
-                  enum:
-                  - tenant_hard_limit_hits_per_hour
-                auto_lift_at:
-                  type: string
-                  format: date-time
-              required:
-              - reason_code
-              - auto_lift_at
+            manual_upload_hints:
+              type: array
+              items:
+                type: object
+                properties:
+                  label:
+                    type: string
+                  url:
+                    type: string
+                    format: uri
+                  leitweg_prefix:
+                    type: string
+                required:
+                - label
+                - url
+              default: []
+            planned:
+              type: array
+              items:
+                type: string
+              default: []
           required:
-          - code
+          - status
           - message
-          - retry_after_seconds
-          - reset_at
-          - limit_code
-          - details
+        validator_summary:
+          type: object
+          properties:
+            valid:
+              type: boolean
+            validator:
+              type: string
+            errors:
+              type: array
+              items:
+                type: object
+                properties:
+                  path:
+                    type: string
+                  rule:
+                    type: string
+                  message:
+                    type: string
+                required:
+                - message
+              default: []
+          required:
+          - valid
+          - validator
+        magic_link_sent:
+          type: boolean
+        recipient_email_sent:
+          type: boolean
       required:
-      - error
+      - invoice_id
+      - document_id
+      - format
+      - download_url
+      - download_url_expires_at
+      - validator_summary
+      - magic_link_sent
   securitySchemes:
     bearerAuth:
       type: http

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Scribo Invoice Invoices Jurisdictions API
+  title: Scribo Invoice Jurisdictions API
   version: 1.0.0
   description: Compliant e-invoice generation. **Phase 1 supports Germany (XRechnung / ZUGFeRD) and the United States (plain PDF) only** — any other sender jurisdiction is rejected with `unsupported_jurisdiction`. The `/api/v1/*` namespace served from `scribo.causaprima.ai` is the public surface — anonymous and rate-limited. The internal `/internal/scribo/*` namespace is used by the Causa Prima web app and MCP server and is not part of this contract.
   contact:
@@ -28,6 +28,8 @@ paths:
                   $ref: '#/components/schemas/JurisdictionEntry'
       tags:
       - Jurisdictions
+      operationId: getApiV1Jurisdictions
+      x-operation-id-source: derived
 components:
   schemas:
     JurisdictionEntry:
