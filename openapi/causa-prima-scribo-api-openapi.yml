@@ -124,6 +124,22 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    VerificationChallenge:
+      type: object
+      properties:
+        challenge_id:
+          type: string
+          format: uuid
+        expires_at:
+          type: string
+          format: date-time
+        next_request_allowed_at:
+          type: string
+          format: date-time
+      required:
+      - challenge_id
+      - expires_at
+      - next_request_allowed_at
     VerificationSnapshot:
       oneOf:
       - type: object
@@ -167,44 +183,6 @@ components:
             - revoked
         required:
         - status
-    VerificationToken:
-      type: object
-      properties:
-        verification_token:
-          type: string
-        expires_at:
-          type: string
-          format: date-time
-      required:
-      - verification_token
-      - expires_at
-    RequestVerificationInput:
-      type: object
-      properties:
-        email:
-          type: string
-          minLength: 3
-          maxLength: 254
-          format: email
-      required:
-      - email
-      additionalProperties: false
-    VerificationChallenge:
-      type: object
-      properties:
-        challenge_id:
-          type: string
-          format: uuid
-        expires_at:
-          type: string
-          format: date-time
-        next_request_allowed_at:
-          type: string
-          format: date-time
-      required:
-      - challenge_id
-      - expires_at
-      - next_request_allowed_at
     ErrorEnvelope:
       type: object
       properties:
@@ -231,6 +209,28 @@ components:
           maxLength: 64
       required:
       - code
+      additionalProperties: false
+    VerificationToken:
+      type: object
+      properties:
+        verification_token:
+          type: string
+        expires_at:
+          type: string
+          format: date-time
+      required:
+      - verification_token
+      - expires_at
+    RequestVerificationInput:
+      type: object
+      properties:
+        email:
+          type: string
+          minLength: 3
+          maxLength: 254
+          format: email
+      required:
+      - email
       additionalProperties: false
   securitySchemes:
     bearerAuth:

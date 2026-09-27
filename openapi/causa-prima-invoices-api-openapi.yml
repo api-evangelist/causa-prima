@@ -148,7 +148,7 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    TenantSoftBlockError:
+    ErrorEnvelope:
       type: object
       properties:
         error:
@@ -156,70 +156,13 @@ components:
           properties:
             code:
               type: string
-              enum:
-              - tenant_soft_blocked
+              example: invalid_input
             message:
               type: string
-            retry_after_seconds:
-              type: integer
-              minimum: 0
-            reset_at:
-              type: string
-              format: date-time
-            limit_code:
-              type: string
-              enum:
-              - tenant_hard_limit_hits_per_hour
-            details:
-              type: object
-              properties:
-                reason_code:
-                  type: string
-                  enum:
-                  - tenant_hard_limit_hits_per_hour
-                auto_lift_at:
-                  type: string
-                  format: date-time
-              required:
-              - reason_code
-              - auto_lift_at
+            details: {}
           required:
           - code
           - message
-          - retry_after_seconds
-          - reset_at
-          - limit_code
-          - details
-      required:
-      - error
-    RateLimitError:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              enum:
-              - rate_limited
-              - tenant_invoice_quota_exceeded
-              example: tenant_invoice_quota_exceeded
-            message:
-              type: string
-            retry_after_seconds:
-              type: integer
-              minimum: 0
-            reset_at:
-              type: string
-              format: date-time
-            limit_code:
-              type: string
-          required:
-          - code
-          - message
-          - retry_after_seconds
-          - reset_at
-          - limit_code
       required:
       - error
     CreateInvoiceInput:
@@ -485,7 +428,7 @@ components:
       - recipient
       - line_items
       - currency
-    ErrorEnvelope:
+    RateLimitError:
       type: object
       properties:
         error:
@@ -493,13 +436,70 @@ components:
           properties:
             code:
               type: string
-              example: invalid_input
+              enum:
+              - rate_limited
+              - tenant_invoice_quota_exceeded
+              example: tenant_invoice_quota_exceeded
             message:
               type: string
-            details: {}
+            retry_after_seconds:
+              type: integer
+              minimum: 0
+            reset_at:
+              type: string
+              format: date-time
+            limit_code:
+              type: string
           required:
           - code
           - message
+          - retry_after_seconds
+          - reset_at
+          - limit_code
+      required:
+      - error
+    TenantSoftBlockError:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              enum:
+              - tenant_soft_blocked
+            message:
+              type: string
+            retry_after_seconds:
+              type: integer
+              minimum: 0
+            reset_at:
+              type: string
+              format: date-time
+            limit_code:
+              type: string
+              enum:
+              - tenant_hard_limit_hits_per_hour
+            details:
+              type: object
+              properties:
+                reason_code:
+                  type: string
+                  enum:
+                  - tenant_hard_limit_hits_per_hour
+                auto_lift_at:
+                  type: string
+                  format: date-time
+              required:
+              - reason_code
+              - auto_lift_at
+          required:
+          - code
+          - message
+          - retry_after_seconds
+          - reset_at
+          - limit_code
+          - details
       required:
       - error
     Invoice:
