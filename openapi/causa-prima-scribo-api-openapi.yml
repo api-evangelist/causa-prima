@@ -140,6 +140,34 @@ components:
       - challenge_id
       - expires_at
       - next_request_allowed_at
+    RequestVerificationInput:
+      type: object
+      properties:
+        email:
+          type: string
+          minLength: 3
+          maxLength: 254
+          format: email
+      required:
+      - email
+      additionalProperties: false
+    ErrorEnvelope:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+              example: invalid_input
+            message:
+              type: string
+            details: {}
+          required:
+          - code
+          - message
+      required:
+      - error
     VerificationSnapshot:
       oneOf:
       - type: object
@@ -183,23 +211,6 @@ components:
             - revoked
         required:
         - status
-    ErrorEnvelope:
-      type: object
-      properties:
-        error:
-          type: object
-          properties:
-            code:
-              type: string
-              example: invalid_input
-            message:
-              type: string
-            details: {}
-          required:
-          - code
-          - message
-      required:
-      - error
     RedeemVerificationInput:
       type: object
       properties:
@@ -221,17 +232,6 @@ components:
       required:
       - verification_token
       - expires_at
-    RequestVerificationInput:
-      type: object
-      properties:
-        email:
-          type: string
-          minLength: 3
-          maxLength: 254
-          format: email
-      required:
-      - email
-      additionalProperties: false
   securitySchemes:
     bearerAuth:
       type: http
