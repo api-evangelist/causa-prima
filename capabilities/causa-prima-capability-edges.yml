@@ -1,0 +1,26 @@
+slug: causa-prima
+provider: Causa Prima
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: Invoices
+  spec_file: causa-prima-invoices-api-openapi.yml
+  capability_id: BC-200.30
+  capability_id_l1: BC-200
+  capability_name: Accounts Receivable Management
+  confidence: 0.8
+  evidence: POST /api/v1/invoices 'Generate a compliant e-invoice'; 'Download the invoice file'; schema
+    CreateInvoiceInput
+  reason: The operations generate, fetch and download outbound customer e-invoices (XRechnung/ZUGFeRD/PDF),
+    which realises customer invoicing within Accounts Receivable. Not subscription billing — there is
+    no metering, rating or recurring-charge surface here.
