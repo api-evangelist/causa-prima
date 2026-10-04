@@ -124,33 +124,17 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    VerificationChallenge:
+    VerificationToken:
       type: object
       properties:
-        challenge_id:
+        verification_token:
           type: string
-          format: uuid
         expires_at:
           type: string
           format: date-time
-        next_request_allowed_at:
-          type: string
-          format: date-time
       required:
-      - challenge_id
+      - verification_token
       - expires_at
-      - next_request_allowed_at
-    RequestVerificationInput:
-      type: object
-      properties:
-        email:
-          type: string
-          minLength: 3
-          maxLength: 254
-          format: email
-      required:
-      - email
-      additionalProperties: false
     ErrorEnvelope:
       type: object
       properties:
@@ -168,6 +152,43 @@ components:
           - message
       required:
       - error
+    RequestVerificationInput:
+      type: object
+      properties:
+        email:
+          type: string
+          minLength: 3
+          maxLength: 254
+          format: email
+      required:
+      - email
+      additionalProperties: false
+    VerificationChallenge:
+      type: object
+      properties:
+        challenge_id:
+          type: string
+          format: uuid
+        expires_at:
+          type: string
+          format: date-time
+        next_request_allowed_at:
+          type: string
+          format: date-time
+      required:
+      - challenge_id
+      - expires_at
+      - next_request_allowed_at
+    RedeemVerificationInput:
+      type: object
+      properties:
+        code:
+          type: string
+          minLength: 1
+          maxLength: 64
+      required:
+      - code
+      additionalProperties: false
     VerificationSnapshot:
       oneOf:
       - type: object
@@ -211,27 +232,6 @@ components:
             - revoked
         required:
         - status
-    RedeemVerificationInput:
-      type: object
-      properties:
-        code:
-          type: string
-          minLength: 1
-          maxLength: 64
-      required:
-      - code
-      additionalProperties: false
-    VerificationToken:
-      type: object
-      properties:
-        verification_token:
-          type: string
-        expires_at:
-          type: string
-          format: date-time
-      required:
-      - verification_token
-      - expires_at
   securitySchemes:
     bearerAuth:
       type: http

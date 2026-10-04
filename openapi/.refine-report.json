@@ -25,7 +25,7 @@
     "causa-prima-scribo-openapi.json: declared missing tag: Invoices",
     "causa-prima-scribo-openapi.json: declared missing tag: Jurisdictions",
     "causa-prima-scribo-openapi.json: declared missing tag: Scribo",
-    "apis.yml register: already-registered"
+    "apis.yml register: unparseable-skip"
   ],
   "skipped": [
     "causa-prima-invoices-api-openapi.yml: previously refined output, superseded by openapi/_original/",
