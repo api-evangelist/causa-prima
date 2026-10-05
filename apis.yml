@@ -118,9 +118,9 @@ apis:
   - type: APIReference
     url: https://scribo.causaprima.ai/docs/api
 common:
-  - type: CapabilityMap
-    url: capabilities/causa-prima-capability-edges.yml
-    name: Causa Prima Business Capability Map
+- type: CapabilityMap
+  url: capabilities/causa-prima-capability-edges.yml
+  name: Causa Prima Business Capability Map
 # --- identity / link properties ---
 - type: Website
   url: https://causaprima.ai/
