@@ -1,0 +1,12 @@
+{
+ "url": "https://scribo.causaprima.ai/api/v1/openapi.json",
+ "requested_url": "https://scribo.causaprima.ai/api/v1/openapi.json",
+ "status": 200,
+ "content_type": "application/json; charset=utf-8",
+ "bytes": 20229,
+ "sha256": "094108698039a2e24cc828d8735e6ed5b36fe0dbe8d34306ebb7aea6389fd516",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "equivalent",
+ "note": "Re-fetched from the provider by verify-openapi-sources.py; the provider's current document describes the same operations (Jaccard 1.0), but the bytes differ, so the archive is an earlier or reformatted copy."
+}
