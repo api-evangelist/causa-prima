@@ -64,6 +64,121 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Causa Prima is a company surfaced as a portfolio company of creandum and added to the API Evangelist network as a stub for enrichment. Sector: ai. This profile is a lead awaiting the enrichment pipeline.
+Causa Prima is an AI-native fintech building an agent-to-agent network for finance teams — automating invoicing, dispute resolution, and dynamic (early-payment) discounting between buyers and suppliers. Its first public product, Scribo, is a free, EN 16931-compliant e-invoicing engine that generates German ZUGFeRD and XRechnung, plus plain US PDF invoices, through five surfaces: a web UI, an HTTP API, a hosted MCP server, an npm CLI, and a Claude / ChatGPT / Codex Agent Skill — all backed by the same public /api/v1 API with no signup (the sender's email is the login via a magic link). The team previously built Taulia (acquired by SAP) and Finoa; Causa Prima is backed by Creandum.
 
-Backed by: creandum — https://causaprima.ai/
+**Areas:** Company · Artificial Intelligence · Fintech · E-Invoicing · Invoicing · Payments · Compliance · Germany · EN 16931 · Agents · MCP
+
+## Causa Prima on APIs.io
+
+Everything profiled for Causa Prima is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/causa-prima/](https://apis.io/providers/causa-prima/)** — or go straight to one of the APIs or properties below.
+
+### APIs (3)
+
+- [Causa Prima Invoices API](https://apis.io/apis/causa-prima/causa-prima-invoices-api/) — The Invoices API from Causa Prima — 3 operation(s) for invoices.
+- [Causa Prima Jurisdictions API](https://apis.io/apis/causa-prima/causa-prima-jurisdictions-api/) — The Jurisdictions API from Causa Prima — 1 operation(s) for jurisdictions.
+- [Causa Prima Scribo API](https://apis.io/apis/causa-prima/causa-prima-scribo-api/) — The Scribo API from Causa Prima — 4 operation(s) for scribo.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [scribo](https://apis.io/servers/causa-prima/scribo/)
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Causa Prima Agentic Access](https://apis.io/agentic-access/causa-prima/causa-prima-agentic-access/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Scribo Invoice Invoices API](https://apis.io/collections/causa-prima/open-causa-prima-invoices-api/)
+- [Scribo Invoice Invoices Jurisdictions API](https://apis.io/collections/causa-prima/open-causa-prima-jurisdictions-api/)
+- [Invoice Invoices Scribo API](https://apis.io/collections/causa-prima/open-causa-prima-scribo-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Causa Prima Scribo Overlay](https://apis.io/overlays/causa-prima/causa-prima-scribo-overlay/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Causa Prima Authentication](https://apis.io/security/causa-prima/causa-prima-authentication/)
+- [Causa Prima Domain Security](https://apis.io/security/causa-prima/causa-prima-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://causaprima.ai/)
+- [Documentation](https://scribo.causaprima.ai/docs)
+- [Getting started](https://scribo.causaprima.ai/getting-started)
+- [API reference](https://scribo.causaprima.ai/docs/api)
+- [Compliance](https://scribo.causaprima.ai/compliance)
+- [Terms of service](https://causaprima.ai/terms)
+- [Privacy policy](https://causaprima.ai/privacy)
+- [GitHub](https://github.com/causa-prima-ai)
+
+## API Evangelist rating
+
+**Kin Score 40.5** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 46.9 |
+| Contract governance | 18.2 |
+| Operational transparency | 2.6 |
+| Developer ergonomics | 64.3 |
+| Access clarity | 28.9 |
+
+**Agent readiness 46.3** — agent-native
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | verified |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | verified |
+| Event Surface Described | — |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 25.0** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/causa-prima/](https://apis.io/providers/causa-prima/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Causa Prima: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/causa-prima/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
